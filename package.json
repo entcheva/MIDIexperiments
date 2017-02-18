@@ -4,7 +4,7 @@
   "description": "MIDI experiments 0.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "url": "https://github.com/entcheva/MIDIexperiments/issues"
   },
   "homepage": "https://github.com/entcheva/MIDIexperiments#readme",
-  "scripts": {
-    "start": "node index.js"
+  "dependencies": {
+    "midi-js": "^0.1.4"
   }
 }
