@@ -1,0 +1,26 @@
+{
+  "name": "master",
+  "version": "1.0.0",
+  "description": "MIDI experiments 0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entcheva/MIDIexperiments.git"
+  },
+  "keywords": [
+    "midi",
+    "javascript"
+  ],
+  "author": "Christina Entcheva, Emily Croft",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entcheva/MIDIexperiments/issues"
+  },
+  "homepage": "https://github.com/entcheva/MIDIexperiments#readme",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
