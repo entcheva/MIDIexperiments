@@ -1,26 +1,74 @@
+// keyboard
+document.addEventListener('keydown', keyboard, false)
+function keyboard(key) {
+	if (key.which === 81) {
+    var audio = document.getElementById('a1')
+    audio.play()
+	} else if (key.which === 87) {
+    var audio = document.getElementById('a1s')
+    audio.play()
+	} else if (key.which === 69) {
+    var audio = document.getElementById('b1')
+    audio.play()
+	} else if (key.which === 82) {
+    var audio = document.getElementById('c1')
+    audio.play()
+	} else if (key.which === 84) {
+    var audio = document.getElementById('c1s')
+    audio.play()
+  } else if (key.which === 89) {
+    var audio = document.getElementById('c2')
+    audio.play()
+  } else if (key.which === 85) {
+    var audio = document.getElementById('d1')
+    audio.play()
+  } else if (key.which === 73) {
+    var audio = document.getElementById('d1s')
+    audio.play()
+  } else if (key.which === 79) {
+    var audio = document.getElementById('e1')
+    audio.play()
+  } else if (key.which === 80) {
+    var audio = document.getElementById('f1')
+    audio.play()
+  } else if (key.which === 219) {
+    var audio = document.getElementById('f1s')
+    audio.play()
+  } else if (key.which === 221) {
+    var audio = document.getElementById('g1')
+    audio.play()
+  } else if (key.which === 220) {
+    var audio = document.getElementById('g1s')
+    audio.play()
+  }
+}
+
+
 var flock
 var text
 
 function setup() {
-  createCanvas(640,360)
-  createP("Drag the mouse to generate new boids.")
+  createCanvas(window.innerWidth, window.innerHeight)
 
   flock = new Flock()
   // Add an initial set of boids into the system
-  for (var i = 0 i < 100 i++) {
-    var b = new Boid(width/2,height/2)
-    flock.addBoid(b)
-  }
+  // for (var i = 0; i < 100; i++) {
+  //   var b = new Boid(width/2,height/2)
+  //   flock.addBoid(b)
+  // }
 }
 
 function draw() {
-  background(51)
+  background(0)
   flock.run()
 }
 
 // Add a new boid into the System
-function mouseDragged() {
-  flock.addBoid(new Boid(mouseX,mouseY))
+function keyPressed() {
+  const xPosition = Math.random() * windowWidth
+  const yPosition = Math.random() * windowHeight
+
+  flock.addBoid(new Boid(xPosition, yPosition))
 }
 
 // The Nature of Code
@@ -36,7 +84,7 @@ function Flock() {
 }
 
 Flock.prototype.run = function() {
-  for (var i = 0 i < this.boids.length i++) {
+  for (var i = 0; i < this.boids.length; i++) {
     this.boids[i].run(this.boids)  // Passing the entire list of boids to each boid individually
   }
 }
@@ -115,7 +163,7 @@ Boid.prototype.seek = function(target) {
 Boid.prototype.render = function() {
   // Draw a triangle rotated in the direction of velocity
   var theta = this.velocity.heading() + radians(90)
-  fill(127)
+  fill('#D8FF00')
   stroke(200)
   push()
   translate(this.position.x,this.position.y)
@@ -143,7 +191,7 @@ Boid.prototype.separate = function(boids) {
   var steer = createVector(0,0)
   var count = 0
   // For every boid in the system, check if it's too close
-  for (var i = 0 i < boids.length i++) {
+  for (var i = 0; i < boids.length; i++) {
     var d = p5.Vector.dist(this.position,boids[i].position)
     // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
     if ((d > 0) && (d < desiredseparation)) {
@@ -177,7 +225,7 @@ Boid.prototype.align = function(boids) {
   var neighbordist = 50
   var sum = createVector(0,0)
   var count = 0
-  for (var i = 0 i < boids.length i++) {
+  for (var i = 0; i < boids.length; i++) {
     var d = p5.Vector.dist(this.position,boids[i].position)
     if ((d > 0) && (d < neighbordist)) {
       sum.add(boids[i].velocity)
@@ -202,7 +250,7 @@ Boid.prototype.cohesion = function(boids) {
   var neighbordist = 50
   var sum = createVector(0,0)   // Start with empty vector to accumulate all locations
   var count = 0
-  for (var i = 0 i < boids.length i++) {
+  for (var i = 0; i < boids.length; i++) {
     var d = p5.Vector.dist(this.position,boids[i].position)
     if ((d > 0) && (d < neighbordist)) {
       sum.add(boids[i].position) // Add location
