@@ -1,37 +1,46 @@
-window.onload = function () {
-	MIDI.loadPlugin({
-		soundfontUrl: "./soundfont/",
-		instrument: "acoustic_grand_piano",
-		onprogress: function(state, progress) {
-			console.log(state, progress);
-		},
-
-		onsuccess: function() {
-			var delay = 0 // play one note every quarter second
-			var note = 50 // the MIDI note
-			var velocity = 127 // how hard the note hits
-			// play the note
-			MIDI.setVolume(0, 127)
-			MIDI.noteOn(0, note, velocity, delay)
-			MIDI.noteOff(0, note, delay + 0.75)
-		}
-	})
-}
-
-MIDI.noteOn(channel, note, velocity, delay)
-
 
 
 document.addEventListener('keydown', keyboard, false)
 
 function keyboard(key) {
-	if (key.which === 38) { // up
-		alert("up!")
-	} else if (key.which === 40) { // down
-		alert("down!")
-	} else if (key.which === 39) { // right
-		alert("right!")
-	} else if (key.which === 37) { // left
-		alert("left!")
-	}
+	if (key.which === 81) {
+    var audio = document.getElementById('a1')
+    audio.play()
+	} else if (key.which === 87) {
+    var audio = document.getElementById('a1s')
+    audio.play()
+	} else if (key.which === 69) {
+    var audio = document.getElementById('b1')
+    audio.play()
+	} else if (key.which === 82) {
+    var audio = document.getElementById('c1')
+    audio.play()
+	} else if (key.which === 84) {
+    var audio = document.getElementById('c1s')
+    audio.play()
+  } else if (key.which === 89) {
+    var audio = document.getElementById('c2')
+    audio.play()
+  } else if (key.which === 85) {
+    var audio = document.getElementById('d1')
+    audio.play()
+  } else if (key.which === 73) {
+    var audio = document.getElementById('d1s')
+    audio.play()
+  } else if (key.which === 79) {
+    var audio = document.getElementById('e1')
+    audio.play()
+  } else if (key.which === 80) {
+    var audio = document.getElementById('f1')
+    audio.play()
+  } else if (key.which === 219) {
+    var audio = document.getElementById('f1s')
+    audio.play()
+  } else if (key.which === 221) {
+    var audio = document.getElementById('g1')
+    audio.play()
+  } else if (key.which === 220) {
+    var audio = document.getElementById('g1s')
+    audio.play()
+  }
 }
