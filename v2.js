@@ -1,6 +1,6 @@
 function setup() {
   createCanvas(600, 600)
-  background('white')
+  background(120)
   osc = new p5.TriOsc()
   osc.start();
   osc.amp(0);
